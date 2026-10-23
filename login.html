@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ورود — Hekpixle</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='58' fill='%2323262a'/><rect x='68' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='158' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='98' y='118' width='60' height='20' rx='6' fill='%23ece7dc'/><circle cx='188' cy='68' r='11' fill='%2322c55e'/></svg>" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body data-theme="light">
+
+  <!-- ============ Top nav (compact) ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='58' fill='%2323262a'/><rect x='68' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='158' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='98' y='118' width='60' height='20' rx='6' fill='%23ece7dc'/><circle cx='188' cy='68' r='11' fill='%2322c55e'/></svg>" alt="" class="logo-mark" />
+        <span>Hekpixle</span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link">خانه</a>
+        <a href="/register" class="btn sm">ثبت‌نام</a>
+        <button class="theme-toggle" id="themeToggle" title="تغییر تم" type="button">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M5 5l1.5 1.5M17.5 17.5 19 19M2 12h2M20 12h2M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="auth-page auth-main">
+    <div class="auth-card">
+      <div class="auth-card-head">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='58' fill='%2323262a'/><rect x='68' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='158' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='98' y='118' width='60' height='20' rx='6' fill='%23ece7dc'/><circle cx='188' cy='68' r='11' fill='%2322c55e'/></svg>" alt="" class="logo-mark" />
+        <h1>ورود</h1>
+        <p>به حساب Hekpixle خود برگردید</p>
+      </div>
+
+      <!-- Logged-in banner (shown if user is already authenticated) -->
+      <div id="loggedInBanner" class="logged-in-banner hidden">
+        <span>شما از قبل وارد شده‌اید. </span>
+        <a href="/" id="goHome">رفتن به خانه</a>
+        <span> یا </span>
+        <a href="/admin" id="goAdmin">پنل مدیریت</a>
+      </div>
+
+      <div id="authMsg"></div>
+
+      <form id="authForm" method="post" autocomplete="on">
+        <div class="field">
+          <label for="email">ایمیل</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" dir="ltr" />
+        </div>
+        <div class="field">
+          <label for="password">رمز عبور</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password" dir="ltr" />
+        </div>
+        <button type="submit" class="btn submit-btn">
+          <span class="spinner"></span>
+          <span class="btn-label">ورود</span>
+        </button>
+      </form>
+
+      <div class="auth-card-foot">
+        حساب ندارید؟ <a href="/register">ثبت‌نام کنید</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="theme.js"></script>
+  <script src="api.js"></script>
+  <script src="auth-page.js"></script>
+  <script>
+    // Initialize auth page in "login" mode
+    initAuthPage('login');
+  </script>
+</body>
+</html>

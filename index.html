@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hekpixle — ایجنت هوش مصنوعی شخصی</title>
+  <meta name="description" content="Hekpixle — ایجنت هوش مصنوعی شخصی دسکتاپ، ساخته‌شده در ایران. مدیریت فایل، اجرای برنامه، ربات تلگرام، و فرمول‌های ریاضی و فیزیک." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='58' fill='%2323262a'/><rect x='68' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='158' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='98' y='118' width='60' height='20' rx='6' fill='%23ece7dc'/><circle cx='188' cy='68' r='11' fill='%2322c55e'/></svg>" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="landing.css" />
+</head>
+<body data-theme="light">
+
+  <!-- ============ Top navigation ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='58' fill='%2323262a'/><rect x='68' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='158' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='98' y='118' width='60' height='20' rx='6' fill='%23ece7dc'/><circle cx='188' cy='68' r='11' fill='%2322c55e'/></svg>" alt="" class="logo-mark" />
+        <span>Hekpixle</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features" class="nav-link">امکانات</a>
+        <a href="#how" class="nav-link">روش کار</a>
+        <a href="#download" class="nav-link">دانلود</a>
+        <a href="/login" class="nav-link">ورود</a>
+        <a href="/register" class="btn sm">ثبت‌نام</a>
+        <button class="theme-toggle" id="themeToggle" title="تغییر تم" type="button">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M5 5l1.5 1.5M17.5 17.5 19 19M2 12h2M20 12h2M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ Hero with 3D canvas ============ -->
+  <section class="hero">
+    <canvas id="heroCanvas" class="hero-canvas"></canvas>
+    <div class="hero-content">
+      <span class="hero-eyebrow">
+        <span class="dot"></span>
+        ساخته‌شده در ایران — بومی و مستقل
+      </span>
+      <h1>
+        ایجنت هوش مصنوعی<br/>
+        <span class="accent">شخصی دسکتاپ شما</span>
+      </h1>
+      <p class="hero-subtitle">
+        Hekpixle یک ایجنت هوش مصنوعی بومی است که فایل‌های شما را مدیریت می‌کند،
+        برنامه‌ها را اجرا می‌کند، فرمول‌های ریاضی و فیزیک را رندر می‌کند و
+        حتی به‌عنوان ربات تلگرام در دسترس است. کاملاً ایرانی، کاملاً شخصی.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn lg">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+          دانلود ایجنت
+        </a>
+        <a href="/register" class="btn ghost lg">ثبت‌نام رایگان</a>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          متن‌باز
+        </span>
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          ویندوز، مک، لینوکس
+        </span>
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          بدون نیاز به اینترنت
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Features ============ -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>همه‌چیز در یک ایجنت</h2>
+        <p>یک دستیار هوشمند که واقعاً کار می‌کند — نه فقط حرف می‌زند</p>
+      </div>
+      <div class="grid-3">
+        <div class="card feature-card hoverable">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+          </div>
+          <h3>مدیریت فایل</h3>
+          <p>خواندن، نوشتن، جابه‌جایی و حذف فایل‌ها با تأیید کاربر. حذف‌ها به سطل بازیافت می‌روند — برگشت‌پذیر.</p>
+        </div>
+        <div class="card feature-card hoverable">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+          </div>
+          <h3>اجرای برنامه</h3>
+          <p>اجرای Chrome، Notepad، VS Code و... با یک دستور. ارسال کلید و کلیک به پنجره‌های فعال.</p>
+        </div>
+        <div class="card feature-card hoverable">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </div>
+          <h3>ربات تلگرام</h3>
+          <p>به‌عنوان ربات تلگرام در چت خصوصی، گروه و سوپرگروه پاسخ می‌دهد. با پشتیبانی از پروکسی برای مناطق مسدود.</p>
+        </div>
+        <div class="card feature-card hoverable">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <h3>فرمول‌های ریاضی</h3>
+          <p>رندر KaTeX برای فرمول‌های فیزیک و ریاضی. <code>$E=mc^2$</code>، انتگرال‌ها، ماتریس‌ها و...</p>
+        </div>
+        <div class="card feature-card hoverable">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>حافظه‌ی بلندمدت</h3>
+          <p>ایجنت نام، ترجیحات، پروژه‌ها و مهلت‌ها را به‌خاطر می‌سپارد. در جلسات بعدی آن‌ها را به‌یاد می‌آورد.</p>
+        </div>
+        <div class="card feature-card hoverable">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          </div>
+          <h3>کاملاً بومی</h3>
+          <p>ساخته‌شده در ایران، مستقل از سرویس‌های خارجی. با هر API سازگار با OpenAI کار می‌کند.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ How it works ============ -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <h2>روش کار</h2>
+        <p>سه قدم تا داشتن یک دستیار شخصی واقعی</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">۱</div>
+          <h4>دانلود و نصب</h4>
+          <p>فایل نصب‌کننده را از پایین صفحه دانلود کنید. روی ویندوز با یک کلیک نصب می‌شود و آیکون روی دسکتاپ ظاهر می‌شود.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">۲</div>
+          <h4>تنظیم API</h4>
+          <p>یک API Key از OpenAI، OpenRouter یا هر سرویس سازگار دیگر وارد کنید. می‌توانید پروکسی محلی هم تنظیم کنید.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">۳</div>
+          <h4>شروع چت</h4>
+          <p>یک چت جدید باز کنید، سؤال بپرسید یا کار بسپارید. ایجنت فکر می‌کند، ابزارها را صدا می‌زند و جواب می‌دهد.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Download CTA ============ -->
+  <section class="section-sm" id="download">
+    <div class="container">
+      <div class="cta">
+        <h2>دانلود Hekpixle</h2>
+        <p>نسخه‌ی رسمی ایجنت، آماده‌ی نصب روی ویندوز. رایگان، متن‌باز، و ساخته‌شده در ایران.</p>
+        <div id="downloadArea">
+          <!-- Filled by landing.js once /api/agent is fetched -->
+          <button class="btn lg" disabled>
+            <span class="spinner" style="border-color: color-mix(in srgb, var(--accent) 30%, transparent); border-top-color: var(--accent);"></span>
+            در حال بارگذاری...
+          </button>
+        </div>
+        <div class="cta-meta" id="downloadMeta"></div>
+      </div>
+
+      <!-- Agent info card (description + version) -->
+      <div id="agentInfoWrap" class="agent-info hidden">
+        <div class="agent-info-header">
+          <div>
+            <span class="badge success">آخرین نسخه</span>
+            <span class="agent-info-version" id="agentVersion">—</span>
+          </div>
+          <span class="agent-info-meta" id="agentMeta"></span>
+        </div>
+        <div class="agent-info-desc" id="agentDesc"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer class="landing-footer">
+    <div class="landing-footer-inner">
+      <div class="landing-footer-brand">
+        <a href="/" class="nav-brand">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='58' fill='%2323262a'/><rect x='68' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='158' y='68' width='30' height='120' rx='8' fill='%23ece7dc'/><rect x='98' y='118' width='60' height='20' rx='6' fill='%23ece7dc'/><circle cx='188' cy='68' r='11' fill='%2322c55e'/></svg>" alt="" class="logo-mark" />
+          <span>Hekpixle</span>
+        </a>
+        <p class="text-soft" style="font-size: 14px; max-width: 360px;">
+          ایجنت هوش مصنوعی شخصی دسکتاپ، ساخته‌شده در ایران. مدیریت فایل، اجرای برنامه،
+          ربات تلگرام، فرمول‌های ریاضی، و حافظه‌ی بلندمدت.
+        </p>
+      </div>
+      <div>
+        <h5>محصول</h5>
+        <ul>
+          <li><a href="#features">امکانات</a></li>
+          <li><a href="#how">روش کار</a></li>
+          <li><a href="#download">دانلود</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>حساب کاربری</h5>
+        <ul>
+          <li><a href="/login">ورود</a></li>
+          <li><a href="/register">ثبت‌نام</a></li>
+          <li><a href="/admin">پنل مدیریت</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="landing-footer-bottom">
+      <div>© ۱۴۰۳ Hekpixle — ساخته‌شده در ایران</div>
+      <div>ساخت‌شده با Electron، Node.js و ❤</div>
+    </div>
+  </footer>
+
+  <!-- Vendor + app scripts -->
+  <script src="three.min.js"></script>
+  <script src="theme.js"></script>
+  <script src="api.js"></script>
+  <script src="landing.js"></script>
+</body>
+</html>

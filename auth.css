@@ -1,0 +1,91 @@
+/* ============================================================================
+   Auth pages (login + register)
+   ============================================================================ */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.auth-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-7) var(--sp-5);
+}
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-md);
+}
+.auth-card-head {
+  text-align: center;
+  margin-bottom: var(--sp-5);
+}
+.auth-card-head .logo-mark {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  margin: 0 auto var(--sp-3);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.18));
+}
+.auth-card-head h1 {
+  font-size: 1.7rem;
+  margin-bottom: 6px;
+}
+.auth-card-head p {
+  color: var(--text-soft);
+  font-size: 14.5px;
+}
+.auth-card-foot {
+  text-align: center;
+  margin-top: var(--sp-4);
+  font-size: 14px;
+  color: var(--text-soft);
+}
+.auth-card-foot a {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Form messages */
+#authMsg { min-height: 0; }
+#authMsg:empty { display: none; }
+
+/* Submit button with spinner state */
+.btn.submit-btn {
+  width: 100%;
+  margin-top: var(--sp-3);
+  position: relative;
+}
+.btn.submit-btn.loading {
+  pointer-events: none;
+  opacity: .8;
+}
+.btn.submit-btn.loading .btn-label { opacity: .5; }
+.btn.submit-btn .spinner {
+  position: absolute;
+  display: none;
+}
+.btn.submit-btn.loading .spinner { display: block; }
+
+/* Logged-in banner on auth pages */
+.logged-in-banner {
+  background: color-mix(in srgb, var(--success) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+  color: var(--success);
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  text-align: center;
+  margin-bottom: var(--sp-4);
+  font-size: 14px;
+}
+.logged-in-banner a {
+  color: var(--success);
+  font-weight: 600;
+  text-decoration: underline;
+}

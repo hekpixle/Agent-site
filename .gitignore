@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Database (auto-created)
+hekpixle.json
+hekpixle.json.tmp
+
+# Uploaded agent files (user content)
+uploads/*
+!uploads/.gitkeep
+
+# Environment
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
