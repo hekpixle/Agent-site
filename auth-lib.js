@@ -66,7 +66,26 @@ function syncAdminFromEnv() {
   return 'updated';
 }
 
+/**
+ * Lets you set the admin email/password right from the start command:
+ *   npm start -- you@example.com NewPassword123
+ * (also works with `npm run dev --` and `npm run watch --`).
+ * It overrides ADMIN_EMAIL / ADMIN_PASSWORD from .env for this run, and
+ * syncAdminFromEnv() then saves the new password to the database.
+ * Returns true if CLI credentials were applied.
+ */
+function applyCliAdminArgs(argv) {
+  const args = (argv || []).slice(2);
+  if (args.length >= 2 && String(args[0]).includes('@')) {
+    process.env.ADMIN_EMAIL = args[0];
+    process.env.ADMIN_PASSWORD = args[1];
+    return true;
+  }
+  return false;
+}
+
 module.exports = {
+  applyCliAdminArgs,
   syncAdminFromEnv,
   getAdminEmail,
   isAdminEmail,
