@@ -78,7 +78,7 @@
             <div class="drop-zone" id="dropZone">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
               <div class="dz-text">فایل را اینجا رها کنید یا کلیک کنید</div>
-              <div class="dz-hint">فرمت‌های مجاز: exe, msi, zip, 7z, rar, pkg, dmg — حداکثر ۲۰۰ مگابایت</div>
+              <div class="dz-hint">فرمت‌های مجاز: exe, msi, zip, 7z, rar, pkg, dmg</div>
               <input type="file" id="fileInput" name="file" />
             </div>
             <div class="file-name-display" id="fileNameDisplay"></div>
@@ -94,6 +94,14 @@
             <label for="description">توضیحات نسخه (Release Notes)</label>
             <textarea id="description" name="description" rows="6" placeholder="تغییرات این نسخه را توضیح دهید...&#10;&#10;مثلاً:&#10;- اضافه شدن پشتیبانی از ربات تلگرام&#10;- اصلاح انیمیشن چت&#10;- بهبود رندر فرمول‌های ریاضی" dir="auto"></textarea>
             <span class="hint">از Markdown می‌توانید استفاده کنید</span>
+          </div>
+
+          <div class="upload-progress hidden" id="uploadProgress">
+            <div class="upload-progress-top">
+              <span id="uploadProgressText">0٪</span>
+              <span id="uploadProgressBytes" class="upload-progress-bytes"></span>
+            </div>
+            <div class="upload-progress-track"><div class="upload-progress-fill" id="uploadProgressFill"></div></div>
           </div>
 
           <button type="submit" class="btn" id="uploadBtn">
