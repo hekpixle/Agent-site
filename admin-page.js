@@ -138,18 +138,43 @@
       fd.append('version', version);
       fd.append('description', description);
 
-      // UI: loading
+      // UI: loading + progress bar
+      const pBox = document.getElementById('uploadProgress');
+      const pText = document.getElementById('uploadProgressText');
+      const pBytes = document.getElementById('uploadProgressBytes');
+      const pFill = document.getElementById('uploadProgressFill');
+      const toFa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+      function setProgress(percent, loaded, total) {
+        pFill.style.width = percent + '%';
+        pText.textContent = toFa(percent) + '٪ آپلود شده';
+        pBytes.textContent = formatBytes(loaded) + ' / ' + formatBytes(total);
+        uploadBtnLabel.textContent = 'در حال آپلود... ' + toFa(percent) + '٪';
+      }
+      pBox.classList.remove('hidden', 'processing');
+      setProgress(0, 0, selectedFile.size);
       uploadBtn.disabled = true;
-      uploadBtnLabel.textContent = 'در حال آپلود...';
+      uploadBtnLabel.textContent = 'در حال آپلود... ۰٪';
       uploadSpinner?.classList.remove('hidden');
 
       let r;
       try {
-        r = await window.api.adminUpload(fd);
+        r = await window.api.adminUploadWithProgress(
+          fd,
+          (p) => setProgress(p.percent, p.loaded, p.total),
+          () => {
+            // all bytes sent — the server is now writing/saving the file
+            setProgress(100, selectedFile.size, selectedFile.size);
+            pText.textContent = '۱۰۰٪ — در حال ذخیره روی سرور...';
+            pBox.classList.add('processing');
+          }
+        );
       } catch (e) {
         r = { ok: false, error: e.message || String(e) };
       }
 
+      pBox.classList.remove('processing');
+      if (!r.ok) pBox.classList.add('hidden');
+      else pText.textContent = '✓ ۱۰۰٪ آپلود شد';
       uploadBtn.disabled = false;
       uploadBtnLabel.textContent = 'آپلود نسخه';
       uploadSpinner?.classList.add('hidden');
@@ -160,6 +185,7 @@
       }
 
       showUploadMsg('✓ نسخه با موفقیت آپلود شد.', 'success');
+      setTimeout(() => pBox.classList.add('hidden'), 2500);
       // Reset form
       form.reset();
       selectedFile = null;
