@@ -54,6 +54,7 @@ const multer = require('multer');
 const { COOKIE_NAME } = require('./auth-lib');
 const { optionalAuth, requireAuth, requireAdmin } = require('./middleware');
 
+const ADMIN_FROM_CLI = require('./auth-lib').applyCliAdminArgs(process.argv);  // npm start -- email password
 const ADMIN_EMAIL = require('./auth-lib').getAdminEmail();
 const ADMIN_SYNC = require('./auth-lib').syncAdminFromEnv();   // applies ADMIN_PASSWORD from .env
 const PORT = parseInt(process.env.PORT || '3000', 10);
@@ -168,6 +169,7 @@ app.listen(PORT, () => {
   console.log(`  ║  Upload limit: ${MAX_UPLOAD_MB}MB${' '.repeat(31 - MAX_UPLOAD_MB.toString().length)}║`);
   console.log('  ╚══════════════════════════════════════════════╝');
   console.log('');
+  if (ADMIN_FROM_CLI) console.log('  (admin email/password taken from the start command)');
   if (process.env.ADMIN_PASSWORD) console.log(`  Admin login → email: ${ADMIN_EMAIL} | password length read from .env: ${process.env.ADMIN_PASSWORD.length}`);
   if (ADMIN_SYNC === 'created')   console.log('  ✔ Admin account created from ADMIN_EMAIL / ADMIN_PASSWORD in .env');
   else if (ADMIN_SYNC === 'updated')  console.log('  ✔ Admin password updated from ADMIN_PASSWORD in .env');
