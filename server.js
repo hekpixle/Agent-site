@@ -58,7 +58,6 @@ const ADMIN_FROM_CLI = require('./auth-lib').applyCliAdminArgs(process.argv);  /
 const ADMIN_EMAIL = require('./auth-lib').getAdminEmail();
 const ADMIN_SYNC = require('./auth-lib').syncAdminFromEnv();   // applies ADMIN_PASSWORD from .env
 const PORT = parseInt(process.env.PORT || '3000', 10);
-const MAX_UPLOAD_MB = parseInt(process.env.MAX_UPLOAD_MB || '200', 10);
 
 const app = express();
 app.disable('x-powered-by');
@@ -121,7 +120,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({
   storage,
-  limits: { fileSize: MAX_UPLOAD_MB * 1024 * 1024 },
+  // No size limit on uploads (no `limits` option)
   fileFilter: (_req, file, cb) => {
     // Accept common installer / archive / executable extensions
     const ok = /\.(exe|msi|zip|7z|rar|tar|gz|pkg|dmg|deb|appimage)$/i.test(file.originalname);
@@ -166,7 +165,7 @@ app.listen(PORT, () => {
   console.log('  ╠══════════════════════════════════════════════╣');
   console.log(`  ║  URL:          http://localhost:${PORT.toString().padEnd(16)}║`);
   console.log(`  ║  Admin email:  ${ADMIN_EMAIL.padEnd(32)}║`);
-  console.log(`  ║  Upload limit: ${MAX_UPLOAD_MB}MB${' '.repeat(31 - MAX_UPLOAD_MB.toString().length)}║`);
+  console.log(`  ║  Upload limit: ${'none'.padEnd(32)}║`);
   console.log('  ╚══════════════════════════════════════════════╝');
   console.log('');
   if (ADMIN_FROM_CLI) console.log('  (admin email/password taken from the start command)');
