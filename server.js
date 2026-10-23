@@ -55,6 +55,7 @@ const { COOKIE_NAME } = require('./auth-lib');
 const { optionalAuth, requireAuth, requireAdmin } = require('./middleware');
 
 const ADMIN_EMAIL = require('./auth-lib').getAdminEmail();
+const ADMIN_SYNC = require('./auth-lib').syncAdminFromEnv();   // applies ADMIN_PASSWORD from .env
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const MAX_UPLOAD_MB = parseInt(process.env.MAX_UPLOAD_MB || '200', 10);
 
@@ -167,7 +168,11 @@ app.listen(PORT, () => {
   console.log(`  ║  Upload limit: ${MAX_UPLOAD_MB}MB${' '.repeat(31 - MAX_UPLOAD_MB.toString().length)}║`);
   console.log('  ╚══════════════════════════════════════════════╝');
   console.log('');
-  console.log('  Admin: register or log in with the admin email above.');
+  if (ADMIN_SYNC === 'created')   console.log('  ✔ Admin account created from ADMIN_EMAIL / ADMIN_PASSWORD in .env');
+  else if (ADMIN_SYNC === 'updated')  console.log('  ✔ Admin password updated from ADMIN_PASSWORD in .env');
+  else if (ADMIN_SYNC === 'unchanged') console.log('  ✔ Admin account matches .env');
+  else if (ADMIN_SYNC === 'invalid')  console.log('  ✖ ADMIN_PASSWORD must be at least 6 characters — ignored.');
+  else console.log('  Admin: set ADMIN_PASSWORD in .env, or register with the admin email above.');
   console.log('  Forgot the password?  npm run create-admin -- you@example.com NewPassword');
   console.log('  To change the admin email, edit ADMIN_EMAIL in .env and restart.');
   console.log('');
