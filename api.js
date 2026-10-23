@@ -66,5 +66,29 @@ window.api = (function () {
     adminListReleases:  ()        => request('GET', '/api/admin/releases'),
     adminDeleteRelease: (id)      => request('DELETE', '/api/admin/releases/' + encodeURIComponent(id)),
     adminUpload:        (formData) => request('POST', '/api/admin/upload', formData),
+
+    // Same upload, but reports progress. onProgress({ loaded, total, percent }) fires
+    // while bytes are sent; onSent() fires once everything is sent (server is now saving).
+    // fetch() can't report upload progress, so this uses XMLHttpRequest.
+    adminUploadWithProgress: (formData, onProgress, onSent) => new Promise((resolve) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/admin/upload');
+      xhr.withCredentials = true;
+      xhr.upload.onprogress = (e) => {
+        if (!e.lengthComputable || !onProgress) return;
+        onProgress({ loaded: e.loaded, total: e.total, percent: Math.min(100, Math.floor((e.loaded / e.total) * 100)) });
+      };
+      xhr.upload.onload = () => { if (onSent) onSent(); };
+      xhr.onerror = () => resolve({ ok: false, error: 'Network error / خطای شبکه — آپلود قطع شد' });
+      xhr.onabort = () => resolve({ ok: false, error: 'آپلود لغو شد' });
+      xhr.onload = () => {
+        let data = null;
+        try { data = JSON.parse(xhr.responseText); } catch { data = xhr.responseText; }
+        if (xhr.status >= 200 && xhr.status < 300) return resolve({ ok: true, data, status: xhr.status });
+        const msg = (data && data.error) || (typeof data === 'string' && data.slice(0, 200)) || ('HTTP ' + xhr.status);
+        resolve({ ok: false, error: msg, status: xhr.status, data });
+      };
+      xhr.send(formData);
+    }),
   };
 })();
