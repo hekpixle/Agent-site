@@ -39,7 +39,35 @@ function verifyToken(token) {
   catch { return null; }
 }
 
+/**
+ * Make the admin account match ADMIN_EMAIL / ADMIN_PASSWORD from .env.
+ * Called once at server start (after .env is loaded):
+ *  - ADMIN_PASSWORD empty  → does nothing (old behaviour: register with ADMIN_EMAIL)
+ *  - admin doesn't exist   → created
+ *  - exists, other password→ password updated + promoted to admin
+ *  - exists, same password → nothing is written
+ * Returns 'skipped' | 'invalid' | 'created' | 'updated' | 'unchanged'.
+ */
+function syncAdminFromEnv() {
+  const password = process.env.ADMIN_PASSWORD || '';
+  if (!password) return 'skipped';
+  if (password.length < 6) return 'invalid';
+
+  const { getUserByEmail, createUser, updateUser } = require('./db');
+  const email = getAdminEmail();
+  const existing = getUserByEmail(email);
+
+  if (!existing) {
+    createUser({ email, name: 'Admin', passwordHash: hashPassword(password), isAdmin: true });
+    return 'created';
+  }
+  if (verifyPassword(password, existing.password_hash) && existing.is_admin) return 'unchanged';
+  updateUser(existing.id, { passwordHash: hashPassword(password), isAdmin: true });
+  return 'updated';
+}
+
 module.exports = {
+  syncAdminFromEnv,
   getAdminEmail,
   isAdminEmail,
   hashPassword,
