@@ -307,3 +307,21 @@ table.data-table {
   align-items: center;
   gap: var(--sp-3);
 }
+
+/* ---------- Upload progress ---------- */
+.upload-progress { margin-bottom: var(--sp-4); }
+.upload-progress-top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 14px; font-weight: 600; margin-bottom: 6px;
+}
+.upload-progress-bytes { font-size: 12.5px; font-weight: 400; color: var(--muted); direction: ltr; }
+.upload-progress-track {
+  height: 10px; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: var(--r-full); overflow: hidden;
+}
+.upload-progress-fill {
+  height: 100%; width: 0%; background: var(--accent);
+  border-radius: var(--r-full); transition: width 120ms linear;
+}
+.upload-progress.processing .upload-progress-fill { animation: up-pulse 1s ease-in-out infinite; }
+@keyframes up-pulse { 50% { opacity: .45; } }
