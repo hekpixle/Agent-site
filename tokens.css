@@ -1,0 +1,148 @@
+/* ============================================================================
+   Hekpixle website — Design tokens
+   Light: bone is the canvas, slate-black is the ink
+   Dark:  black is the canvas, bone is the ink
+   ============================================================================ */
+
+@font-face {
+  font-family: 'Vazirmatn';
+  font-weight: 400; font-style: normal; font-display: swap;
+  src: url('Vazirmatn-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  font-weight: 500; font-style: normal; font-display: swap;
+  src: url('Vazirmatn-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  font-weight: 600; font-style: normal; font-display: swap;
+  src: url('Vazirmatn-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  font-weight: 700; font-style: normal; font-display: swap;
+  src: url('Vazirmatn-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 400; font-style: normal; font-display: swap;
+  src: url('SpaceGrotesk-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 500; font-style: normal; font-display: swap;
+  src: url('SpaceGrotesk-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 600; font-style: normal; font-display: swap;
+  src: url('SpaceGrotesk-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 700; font-style: normal; font-display: swap;
+  src: url('SpaceGrotesk-Bold.woff2') format('woff2');
+}
+
+/* ---------- Light theme: bone canvas, slate-black ink ---------- */
+:root,
+body[data-theme='light'] {
+  --bg:           #ece7dc;   /* bone — the canvas */
+  --bg-soft:      #e3ddd0;
+  --bg-elevated:  #f3eee2;
+  --panel:        #e3ddd0;
+  --panel-2:      #d9d2c3;
+  --line:         #cfc8b8;
+
+  --text:         #25282c;   /* near-black slate — the ink */
+  --text-soft:    #4a4d52;
+  --muted:        #6b6e72;
+
+  --accent:       #25282c;   /* black */
+  --accent-text:  #ece7dc;   /* bone — text on black */
+
+  --user-bubble:  #fbfaf6;
+  --user-text:    #25282c;
+
+  --link:         #2b2f33;
+  --link-hover:   #000;
+
+  --code-bg:      #1c1c1e;
+  --code-text:    #ece7dc;
+
+  --success:      #2f7a4f;
+  --error:        #b3402f;
+  --warn:         #b5852a;
+
+  --shadow-sm:    0 1px 3px rgba(0,0,0,.06);
+  --shadow-md:    0 4px 14px rgba(0,0,0,.08);
+  --shadow-lg:    0 14px 38px rgba(0,0,0,.18);
+
+  --glow-1: #2b2f33;
+  --glow-2: #8a8f94;
+  --glow-3: #b7ab92;
+}
+
+/* ---------- Dark theme: black canvas, bone ink ---------- */
+body[data-theme='dark'] {
+  --bg:           #0c0c0d;   /* near-black — the canvas */
+  --bg-soft:      #131314;
+  --bg-elevated:  #1c1c1e;
+  --panel:        #131314;
+  --panel-2:      #1c1c1e;
+  --line:         #26262a;
+
+  --text:         #ece7dc;   /* bone — the ink */
+  --text-soft:    #c9c4b8;
+  --muted:        #8d8a82;
+
+  --accent:       #ece7dc;   /* bone */
+  --accent-text:  #0c0c0d;   /* black — text on bone */
+
+  --user-bubble:  #ece7dc;
+  --user-text:    #0c0c0d;
+
+  --link:         #ece7dc;
+  --link-hover:   #ffffff;
+
+  --code-bg:      #1c1c1e;
+  --code-text:    #ece7dc;
+
+  --success:      #6dc28d;
+  --error:        #e07a69;
+  --warn:         #d4a85a;
+
+  --shadow-sm:    0 1px 3px rgba(0,0,0,.4);
+  --shadow-md:    0 4px 14px rgba(0,0,0,.4);
+  --shadow-lg:    0 14px 38px rgba(0,0,0,.6);
+
+  --glow-1: #ece7dc;
+  --glow-2: #6f6c66;
+  --glow-3: #b7ab92;
+}
+
+/* ---------- Radii & spacing ---------- */
+:root {
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  --font-sans: 'Vazirmatn', 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Space Grotesk', 'Consolas', 'SF Mono', monospace;
+
+  --max-w: 1200px;
+  --transition: 200ms cubic-bezier(.2,.8,.2,1);
+}
