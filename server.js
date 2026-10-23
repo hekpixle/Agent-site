@@ -168,6 +168,7 @@ app.listen(PORT, () => {
   console.log(`  ║  Upload limit: ${MAX_UPLOAD_MB}MB${' '.repeat(31 - MAX_UPLOAD_MB.toString().length)}║`);
   console.log('  ╚══════════════════════════════════════════════╝');
   console.log('');
+  if (process.env.ADMIN_PASSWORD) console.log(`  Admin login → email: ${ADMIN_EMAIL} | password length read from .env: ${process.env.ADMIN_PASSWORD.length}`);
   if (ADMIN_SYNC === 'created')   console.log('  ✔ Admin account created from ADMIN_EMAIL / ADMIN_PASSWORD in .env');
   else if (ADMIN_SYNC === 'updated')  console.log('  ✔ Admin password updated from ADMIN_PASSWORD in .env');
   else if (ADMIN_SYNC === 'unchanged') console.log('  ✔ Admin account matches .env');
